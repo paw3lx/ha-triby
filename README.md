@@ -81,7 +81,9 @@ affiliates. Invoxia has not reviewed or approved this integration and provides n
   the publicly available Triby Android app solely to keep a device the author owns working
   with Home Assistant after official support ended.
 - No Invoxia source code, firmware, or artwork is included or redistributed in this repository.
-  The icon is original artwork.
+  The icon is original artwork. Text is rendered with the bundled
+  [DejaVu Sans](https://dejavu-fonts.github.io/) font (free license, see
+  `custom_components/triby/fonts/LICENSE-DejaVu.txt`).
 - Invoxia may change, restrict, or shut down its cloud service at any time without notice, and
   this integration may stop working as a result.
 - You use this integration with your own Invoxia account, at your own risk. It is provided

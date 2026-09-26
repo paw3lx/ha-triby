@@ -2,13 +2,22 @@
 
 from __future__ import annotations
 
+import functools
 import io
+from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
 from .api import HEIGHT, WIDTH
 
-MARGIN = 7
+MARGIN = 6
+# Bundled because Pillow's built-in font lacks Polish and other non-ASCII glyphs.
+FONT_PATH = Path(__file__).parent / "fonts" / "DejaVuSans-Bold.ttf"
+
+
+@functools.cache
+def _font(size: int) -> ImageFont.FreeTypeFont:
+    return ImageFont.truetype(str(FONT_PATH), size)
 
 
 def _wrap(text: str, font: ImageFont.FreeTypeFont) -> list[str]:
@@ -29,7 +38,7 @@ def _wrap(text: str, font: ImageFont.FreeTypeFont) -> list[str]:
 def render_text(text: str) -> Image.Image:
     """Black text on transparent background, using the largest font size that fits."""
     for size in range(64, 9, -2):
-        font = ImageFont.load_default(size)  # Pillow's bundled scalable font
+        font = _font(size)
         lines = _wrap(text, font)
         line_h = int(size * 1.15)
         if len(lines) * line_h <= HEIGHT - 2 * MARGIN and all(
@@ -40,9 +49,7 @@ def render_text(text: str) -> Image.Image:
     draw = ImageDraw.Draw(img)
     y = (HEIGHT - len(lines) * line_h) // 2
     for line in lines:
-        # 1px stroke fakes a bold weight, which reads better on e-ink
-        draw.text(((WIDTH - font.getlength(line)) / 2, y), line, font=font, fill=(0, 0, 0, 255),
-                  stroke_width=1, stroke_fill=(0, 0, 0, 255))
+        draw.text(((WIDTH - font.getlength(line)) / 2, y), line, font=font, fill=(0, 0, 0, 255))
         y += line_h
     return img
 
