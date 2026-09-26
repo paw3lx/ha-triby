@@ -1,5 +1,10 @@
 # Invoxia Triby for Home Assistant
 
+> [!IMPORTANT]
+> **Unofficial project.** This integration is not affiliated with, endorsed by, sponsored by,
+> or supported by Invoxia. Please don't contact Invoxia support about it. See the
+> [Disclaimer](#disclaimer).
+
 Send notifications (text or images) from Home Assistant to an
 [Invoxia Triby](https://en.wikipedia.org/wiki/Invoxia) e-ink display, the same way the
 discontinued Triby mobile app sends "doodles".
@@ -65,3 +70,23 @@ data:
 The server uses a private CA with legacy crypto (RSA-1024, SHA-1) that current OpenSSL
 rejects, so the integration pins the server certificate's SHA-256 fingerprint instead of
 lowering TLS security levels.
+
+## Disclaimer
+
+This is an independent, community-made project. It is **not affiliated with, endorsed by,
+sponsored by, or in any way officially connected to Invoxia** or any of its subsidiaries or
+affiliates. Invoxia has not reviewed or approved this integration and provides no support for it.
+
+- The cloud API used here is private and undocumented. It was worked out by reverse-engineering
+  the publicly available Triby Android app solely to keep a device the author owns working
+  with Home Assistant after official support ended.
+- No Invoxia source code, firmware, or artwork is included or redistributed in this repository.
+  The icon is original artwork.
+- Invoxia may change, restrict, or shut down its cloud service at any time without notice, and
+  this integration may stop working as a result.
+- You use this integration with your own Invoxia account, at your own risk. It is provided
+  "as is", without warranty of any kind.
+
+"Invoxia" and "Triby" are trademarks of their respective owner. They are used here only to
+identify the device this integration works with, and their use does not imply any affiliation
+with or endorsement by the trademark owner.
