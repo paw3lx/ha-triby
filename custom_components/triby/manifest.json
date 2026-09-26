@@ -1,0 +1,13 @@
+{
+  "domain": "triby",
+  "name": "Invoxia Triby",
+  "codeowners": ["@paw3lx"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/paw3lx/ha-triby",
+  "integration_type": "device",
+  "iot_class": "cloud_push",
+  "issue_tracker": "https://github.com/paw3lx/ha-triby/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
